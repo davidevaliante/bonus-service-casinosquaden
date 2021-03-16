@@ -83,9 +83,7 @@ export async function getServerSideProps({ query, res }) {
         }
     })
 
-    const link = links.data.data.streamer.bonuses[0].links.find(b => b.label === `${slug} ${configuration.streamerName} ${country}`)
-
-    
+    const link = links.data.data.streamer.bonuses[0].links.find(b => b.label === `${slug} ${configuration.streamerName} ${country}`)   
     
     return {
         props: {

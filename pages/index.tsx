@@ -42,7 +42,10 @@ const index : FunctionComponent<Props> = ({streamerData}) => {
 
     const getBonusList = async () => {
         let bonusForCountry = streamerData.countryBonusList.filter(it => it.label === country)
-        if(bonusForCountry.length == 0) bonusForCountry = streamerData.countryBonusList.filter(it => it.label === 'row')
+        if(bonusForCountry.length == 0) {
+            bonusForCountry = streamerData.countryBonusList.filter(it => it.label === 'row')
+            setCountry('row')
+        }
 
         const requests = bonusForCountry[0].bonuses.map(b =>  axios.get(`${configuration.api}/bonuses/${b.id}`))
 
