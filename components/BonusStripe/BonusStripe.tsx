@@ -26,7 +26,6 @@ const BonusStripe: FunctionComponent<Props> = ({ bonus, eng = false, countryCode
     const { currentCountry } = useContext(countryContext)
 
     const visit = () => {
-
         Router.push(`/visita/${bonus.compareCode}/${countryCode}`)
     }
 
@@ -83,12 +82,12 @@ const BonusStripe: FunctionComponent<Props> = ({ bonus, eng = false, countryCode
 
             <RowDeposit onClick={() => visit()}>
                 <div className='deposit-container'>
-                    <h3>{'Senza Deposito'}</h3>
+                    <h3>{countryCode === 'it' ? 'Senza Deposito' : 'Without Deposit'}</h3>
                     <p>{extractNoDepositText()}</p>
                 </div>
 
                 <div className='deposit-container'>
-                    <h3>{'Con Deposito'}</h3>
+                    <h3>{countryCode === 'it' ? 'Con Deposito' : 'With Deposit'}</h3>
                     <p>{extractWithDepositText()}</p>
                 </div>
             </RowDeposit>
@@ -99,7 +98,7 @@ const BonusStripe: FunctionComponent<Props> = ({ bonus, eng = false, countryCode
                 </GuideButton>} */}
 
                 <WebSiteButton onClick={() => visit()}>
-                    {'Visita il sito'}
+                    {countryCode === 'it' ? 'Visita il sito' : 'Visit the website'}
                 </WebSiteButton>
             </Row>
         </Container>

@@ -16,6 +16,17 @@ interface Props {
   streamerData : Streamer
 }
 
+const translations = {
+    it : 'Migliori casinò legali dove trovare questi giochi:',
+    row : 'Best websites for this games:',
+    de :  'Finden Sie die Top-Casino-Auswahl',
+    es :  'Mejores opciones de casino',    
+    fi : 'Parhaat kasinovaihtoehdot',
+    no : 'Finne de beste casino valg',
+    se : 'Du hitta valen för top kasino',
+    pt : 'Encontrará as melhores opções de cassino'
+}
+
 const index : FunctionComponent<Props> = ({streamerData}) => {
 
     const [loading, setLoading] = useState(true)
@@ -29,6 +40,9 @@ const index : FunctionComponent<Props> = ({streamerData}) => {
     }, [bonuses])
 
     console.log(streamerData)
+
+    const translate = () => translations[country] ? translations[country] : translations['row']
+
    
     useEffect(() => {
         geoLocate()
@@ -65,14 +79,14 @@ const index : FunctionComponent<Props> = ({streamerData}) => {
                     <img className='logo' src='/icons/app_icon.png' />
                 </div>
 
-                <h1>Migliori casinò legali dove trovare questi giochi:</h1>
+                <h1>{translate()}</h1>
 
                 {bonuses && bonuses.length > 2 && bonuses.map((bonus : StreamerBonus) => <BonusStripe key={`${bonus.name}`} bonus={bonus} countryCode={country} />)}
 
                 {bonuses && bonuses.length <= 2 && streamerData.bonuses.map((bonus : StreamerBonus) => <BonusStripe key={`${bonus.name}`} bonus={bonus} countryCode={country} />)}
 
                 <div style={{ padding: '1rem' }}>
-                    <VideoDiscalimer />
+                    <VideoDiscalimer countryCode={country}/>
                 </div>
                 <div className='bottom'>
                     <p style={{textAlign : 'center'}}>This service is provided by <a href='https://www.topaffiliation.com'>Top Affiliation</a></p>
