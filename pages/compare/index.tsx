@@ -24,11 +24,22 @@ interface Props {
     bonusToShow : string[]
 }
 
+const translations = {
+    it : 'Migliori casinò legali dove trovare questi giochi:',
+    row : 'Best websites for this games:',
+    de :  'Finden Sie die Top-Casino-Auswahl',
+    es :  'Mejores opciones de casino',    
+    fi : 'Parhaat kasinovaihtoehdot',
+    no : 'Finne de beste casino valg',
+    se : 'Du hitta valen för top kasino',
+    pt : 'Encontrará as melhores opções de cassino'
+}
+
 const Compare: FunctionComponent<Props> = ({ streamerData, bonusToShow }) => {
 
     console.log(bonusToShow)
 
-    const [country, setCountry] = useState<string | undefined>(undefined)
+    const [country, setCountry] = useState<string>('')
     const [bonuses, setBonuses] = useState<StreamerBonus[] | undefined>(undefined)
 
   
@@ -57,9 +68,12 @@ const Compare: FunctionComponent<Props> = ({ streamerData, bonusToShow }) => {
         setBonuses(placeholder)
         console.log(placeholder, 'bonus to show')
     }
+
+    const translate = () => translations[country] ? translations[country] : translations['row']
+
     
 
-    if(!country) return <FullPageLoader />
+    if(country === '') return <FullPageLoader />
     return (
         <Wrapper>
             <Container>
@@ -67,14 +81,14 @@ const Compare: FunctionComponent<Props> = ({ streamerData, bonusToShow }) => {
                     <img className='logo' src='/icons/app_icon.png' />
                 </div>
 
-                <h1>Top Casino choice for this Slot Machine</h1>
+                <h1>{translate()}</h1>
 
                 {bonuses && bonuses.length > 2 && bonuses.map((bonus : StreamerBonus) => <BonusStripe key={`${bonus.name}`} bonus={bonus} countryCode={country} />)}
 
                 {bonuses && bonuses.length <= 2 && streamerData.bonuses.map((bonus : StreamerBonus) => <BonusStripe key={`${bonus.name}`} bonus={bonus} countryCode={country} />)}
 
                 <div style={{ padding: '1rem' }}>
-                    <VideoDiscalimer />
+                    <VideoDiscalimer countryCode={country}/>
                 </div>
                 <div className='bottom'>
                     <p style={{textAlign : 'center'}}>This service is provided by <a href='https://www.topaffiliation.com'>Top Affiliation</a></p>
