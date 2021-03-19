@@ -62,7 +62,6 @@ const Compare: FunctionComponent<Props> = ({ streamerData, bonusToShow }) => {
                 {bonuses && bonuses.length <= 2 && streamerData.bonuses.map((bonus : StreamerBonus) => <BonusStripe key={`${bonus.name}`} bonus={bonus} countryCode={country} />)}
 
                 <div style={{ padding: '1rem' }}>
-                    <VideoDiscalimer />
                 </div>
                 <div className='bottom'>
                     <p style={{textAlign : 'center'}}>This service is provided by <a href='https://www.topaffiliation.com'>Top Affiliation</a></p>
