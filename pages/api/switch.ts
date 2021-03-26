@@ -17,6 +17,7 @@ export default (req, res) => {
         secondaryColor : '#e1b96e',
         fontString : "https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap",
         font : 'Turret Road',
+        geoApi : 'https://api.ipgeolocation.io/ipgeo'
     })
 
 
