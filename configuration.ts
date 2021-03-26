@@ -7,6 +7,7 @@ export interface Config {
     fontString : string
     font : string
     youtubeMetatag? : string
+    geoApi : string
 }
 
 export const defaultConfig : Config = {
@@ -17,6 +18,7 @@ export const defaultConfig : Config = {
     secondaryColor : '#e1b96e',
     fontString : "",
     font : `'Roboto', sans-serif`,
+    geoApi : 'https://api.ipgeolocation.io/ipgeo'
 }
 
 export let configuration : Config = {
@@ -27,6 +29,7 @@ export let configuration : Config = {
     secondaryColor : '#e1b96e',
     fontString : "",
     font : `'Roboto', sans-serif`,
+    geoApi : 'https://api.ipgeolocation.io/ipgeo'
 }
 
 export const setConfigurationFile = (newConfig  : Config = configuration) => {
