@@ -49,9 +49,10 @@ const index : FunctionComponent<Props> = ({streamerData}) => {
     }, [])
 
     const geoLocate = async () => {
-        const userCountryRequest = await axios.get(configuration.geoApi)
-        const countryCode = lowerCase(userCountryRequest.data.country_code2)
-        setCountry(countryCode)
+        // const userCountryRequest = await axios.get(configuration.geoApi)
+        // const countryCode = lowerCase(userCountryRequest.data.country_code2)
+        // setCountry(countryCode)
+        setCountry('it')
     }
 
     const getBonusList = async () => {
@@ -60,14 +61,21 @@ const index : FunctionComponent<Props> = ({streamerData}) => {
             bonusForCountry = streamerData.countryBonusList.filter(it => it.label === 'row')
             setCountry('row')
         }
+        const ordering = streamerData.countryBonusList.filter(it => it.label === country)[0].ordering.split(' ')
 
         const requests = bonusForCountry[0].bonuses.map(b =>  axios.get(`${configuration.api}/bonuses/${b.id}`))
 
         const bList = await Promise.all(requests) 
 
-        console.log(bList.map(r => r.data as StreamerBonus[]))
+        const unorderedBonuses = bList.map(r => r.data as StreamerBonus)
+        let ordered : StreamerBonus[] = []
 
-        setBonuses(bList.map(r => r.data as StreamerBonus))
+        ordering.forEach(code => {
+            const matchingBonus =  unorderedBonuses.find(it => it.compareCode ===  code)
+            if(matchingBonus) ordered.push(matchingBonus)
+        })
+
+        setBonuses(ordered)
         setLoading(false)
     }
 

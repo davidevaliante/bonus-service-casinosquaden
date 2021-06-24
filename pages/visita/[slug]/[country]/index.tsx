@@ -69,10 +69,9 @@ export async function getServerSideProps({ query, res }) {
     const slug = query.slug as string
     const country = query.country as string
 
-    let redirect
-
     const aquaClient = new AquaClient()
 
+    console.log(slug,configuration.streamerName, country)
 
     const links = await aquaClient.query({
         query : bonusQuery,
