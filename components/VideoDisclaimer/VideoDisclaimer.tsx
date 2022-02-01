@@ -14,7 +14,7 @@ const palette = {
 };
 
 const translations = {
-  it: "Questo sito confronta [in tempo reale] i bonus offerti dai Bookmakers da noi selezionati, in possesso di regolare concessione ad operare in Italia rilasciata dall’Agenzia delle Dogane e dei Monopoli. Il servizio, come indicato dall’Autorità per le garanzie nelle comunicazioni al punto 5.6 delle proprie Linee Guida (allegate alla delibera 132/19/CONS), è effettuato nel rispetto del principio di continenza, non ingannevolezza e trasparenza e non costituisce pertanto una forma di pubblicità",
+  it: "This website compares in real time the bonuses from Bookmakers we selected with a regular license. This website should not be used below the age of 18. Gambling is addictive, just play for fun and don't chase your losses",
   row: "This website compares in real time the bonuses from Bookmakers we selected with a regular license. This website should not be used below the age of 18. Gambling is addictive, just play for fun and don't chase your losses",
   de: "Diese Site fördert oder unterstützt keine Form von Wetten oder Glücksspielen für Benutzer unter 18 Jahren. Glücksspiel macht süchtig und ist keine Form des Einkommens. Tun Sie es nur zum Spaß und jagen Sie niemals einem Verlust nach.",
   es: "Este sitio no promueve ni respalda ninguna forma de apuestas o juegos de azar para usuarios menores de 18 años. El juego es adictivo y no es una forma de ingresos, simplemente hágalo por diversión y no busque ninguna pérdida.",
@@ -32,7 +32,7 @@ const VideoDiscalimer: FunctionComponent<Props> = ({ countryCode }) => {
     <Container>
       {translate()}
 
-      {countryCode === "it" && (
+      {/* {countryCode === "it" && (
         <div>
           <p style={{ margin: "1rem 0rem" }}>
             Il gioco è vietato ai minori e può causare dipendenza patologica.
@@ -62,7 +62,7 @@ const VideoDiscalimer: FunctionComponent<Props> = ({ countryCode }) => {
             />
           </div>
         </div>
-      )}
+      )} */}
     </Container>
   );
 };
