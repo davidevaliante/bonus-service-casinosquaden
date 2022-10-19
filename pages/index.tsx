@@ -17,7 +17,7 @@ interface Props {
 }
 
 const translations = {
-	it: 'Migliori casinò legali dove trovare questi giochi:',
+	it: 'Comparazione siti di gioco da valutare',
 	row: 'Best websites for this games:',
 	de: 'Finden Sie die Top-Casino-Auswahl',
 	es: 'Mejores opciones de casino',
